@@ -1,0 +1,30 @@
+name: Radhika Agency - No Dhemaji V5 Final - krr908
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 3 * * *'
+    - cron: '30 9 * * *'
+    - cron: '00 15 * * *'
+
+jobs:
+  lifetime-no-dhemaji-v5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No Dhemaji - 10 Products - All Accounts
+        run: |
+          echo "======================================"
+          echo "PAYHIP: kg214lll@gmail.com - 10 Products - No Dhemaji"
+          echo "YOUTUBE ONLY: kgowala89@gmail.com - AI Wonder Shorts @krishnagowala9464"
+          echo "Shop: payhip.com/Radhikaonline - All Products"
+          echo "POST: 【entity-BOAT¦canonical_name=BOAT】 FRONT LUXURY EDITION 1.20"
+          echo "POST: ANIMAL FACTS 2.99 / AI WEBSITES 5.99 / 365 VAULT 3.99"
+          echo "POST: WALLPAPERS 2.40 / BUSINESS PACK 11.99 / FESTIVAL 7.00 / CREATOR KIT 5.00"
+          echo "FACEBOOK: No Link Main Post - Comment me payhip.com/Radhikaonline"
+          echo "INSTAGRAM: Link in Bio - @guru1214348"
+          echo "WHATSAPP: 7996928762 - Status + Catalog"
+          echo "YOUTUBE: Description me link - Unlimited - kgowala89@gmail.com"
+          echo "SUCCESS: Sabhi Accounts - No Dhemaji - Lifetime OK!"
+          echo "krr908 - Zindagi Bhar Chalega"
+          echo "======================================"
