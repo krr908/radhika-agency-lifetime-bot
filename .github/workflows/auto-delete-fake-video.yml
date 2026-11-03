@@ -1,0 +1,34 @@
+name: Auto Delete Fake Video - 6.2K - No Dhemaji - krr908
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-fake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Delete Fake 6.2K Video - No Dhemaji - BEST
+        run: |
+          echo "Checking videos/boat-front-luxury.mp4 - Size"
+          ls -lh videos/ 2>&1 || echo "videos folder not found"
+          ls -lh videos/boat-front-luxury.mp4 2>&1 || echo "File not found - maybe already deleted"
+          SIZE=$(stat -c%s "videos/boat-front-luxury.mp4" 2>/dev/null || echo 0)
+          echo "Size: $SIZE bytes - Fake if < 100000 bytes (100KB)"
+          if [ "$SIZE" -lt 100000 ] && [ "$SIZE" -gt 0 ]; then
+            echo "Fake 6.2K found - Deleting - No Dhemaji - BEST"
+            rm -f videos/boat-front-luxury.mp4
+            git config --global user.name "krr908"
+            git config --global user.email "kg214lll@gmail.com"
+            git add -A
+            git commit -m "Auto Delete Fake 6.2K boat-front-luxury.mp4 - No Dhemaji - 10 Products - BEST - krr908" || echo "No commit needed"
+            git push
+            echo "Fake video deleted - Success - No Dhemaji - BEST - Green Tick"
+          elif [ "$SIZE" -eq 0 ]; then
+            echo "File already deleted or not found - No Dhemaji - BEST - Already Clean"
+          else
+            echo "Real video found - Size $SIZE - Not deleting - Real MP4 - BEST - Keep - $SIZE bytes"
+          fi
+          echo "Checking videos folder after delete"
+          ls -lh videos/ 2>&1
+          echo "SUCCESS Auto Delete Fake Video - No Dhemaji - krr908 - BEST"
