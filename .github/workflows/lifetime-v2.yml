@@ -1,0 +1,42 @@
+name: Radhika Agency Lifetime OS V2 - krr908 - Zindagi Bhar
+
+on:
+  schedule:
+    - cron: '30 3 * * *'
+    - cron: '30 9 * * *'
+    - cron: '00 15 * * *'
+  workflow_dispatch:
+
+jobs:
+  lifetime-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Lifetime Bot - Radhika Agency - krr908
+        run: |
+          echo "🚀 RADHIKA AGENCY LIFETIME OS V2 - krr908"
+          echo "📧 kg214lll@gmail.com | 📱 7996928762"
+          echo "📍 Dhemaji 787059 | Bihar ID"
+          echo "📅 Date: $(date)"
+          echo ""
+          echo "=== FACEBOOK POST - TODAY ==="
+          DAY=$(date +%d)
+          if [ $((DAY % 3)) -eq 0 ]; then
+            echo "🚀 ANTARIKSH SE DHEMAJI TAK - SAPNA BADA HAI!"
+            echo "Bihar ID, Dhemaji 787059 me rehta hun, soch antariksh jaisi badi hai!"
+            echo "Ye space photo AI se banayi hai - 1000 Prompts Pack se!"
+            echo "Shop: payhip.com/Radhikaonline - Link Comment Me!"
+          elif [ $((DAY % 3)) -eq 1 ]; then
+            echo "🛥️ BOAT FRONT LUXURY - DHEMAJI BOY DREAM!"
+            echo "Front deck, pineapple mocktail, yacht life - AI se banaya!"
+            echo "Shop: payhip.com/Radhikaonline"
+          else
+            echo "📚 DHEMAJI COLLEGE SPECIAL - SILAPATHAR JONAI LAKHIMPUR!"
+            echo "UPSC APSC SSC 2500+ Pages Notes"
+            echo "Shop: payhip.com/Radhikaonline"
+          fi
+          echo ""
+          echo "✅ Bot Success - Next run tomorrow - Zindagi bhar chalega!"
+          echo "♾️ krr908/radhika-agency-lifetime-bot - Lifetime!"
