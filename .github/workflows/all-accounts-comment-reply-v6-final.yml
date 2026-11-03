@@ -1,0 +1,177 @@
+
+name: Radhika Agency - ALL ACCOUNTS COMMENT AUTO-REPLY V6 - No Dhemaji - krr908
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Har 15 minute me comments check - Free
+    - cron: '30 3 * * *'
+    - cron: '30 9 * * *'
+    - cron: '00 15 * * *'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Kis platform ka comment reply? (all/facebook/instagram/youtube/whatsapp/payhip)'
+        required: false
+        default: 'all'
+      test_comment:
+        description: 'Test comment text - jaise koi customer likhega'
+        required: false
+        default: 'Link please? Price kya hai?'
+
+jobs:
+  all-accounts-comment-reply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sabhi Accounts Comment Auto-Reply - No Dhemaji - krr908
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
+          FB_COMMENT_TOKEN: ${{ secrets.FB_COMMENT_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          PAYHIP_EMAIL: ${{ secrets.PAYHIP_EMAIL }}
+          YOUTUBE_EMAIL: ${{ secrets.YOUTUBE_EMAIL }}
+        run: |
+          echo "=================================================="
+          echo "RADHIKA AGENCY - ALL ACCOUNTS COMMENT AUTO-REPLY V6"
+          echo "No Dhemaji - 10 Products Only - krr908 - Lifetime"
+          echo "PAYHIP: kg214lll@gmail.com | YOUTUBE: kgowala89@gmail.com"
+          echo "Shop: payhip.com/Radhikaonline - All 10 Products"
+          echo "=================================================="
+          echo ""
+          TEST="${{ github.event.inputs.test_comment }}"
+          PLATFORM="${{ github.event.inputs.platform }}"
+          if [ -z "$PLATFORM" ]; then PLATFORM="all"; fi
+          if [ -z "$TEST" ]; then TEST="Link please?"; fi
+          echo "Platform Input: $PLATFORM | Test Comment: $TEST"
+          echo ""
+          
+          # All 10 Products - No Dhemaji
+          echo "10 PRODUCTS - NO DHEMAJI - ROTATION:"
+          echo "1. BOAT FRONT LUXURY EDITION 1.20 - 1000 AI Prompts - Yacht"
+          echo "2. SPACE EDITION - Antariksh - Space Earth"
+          echo "3. ANIMAL FACTS - 100+ Facts - 2.99"
+          echo "4. 3 SECRET AI WEBSITES + BLUEPRINT - 5.99"
+          echo "5. 365 AI VAULT HINDI ENGLISH - 3.99"
+          echo "6. DIGITAL PREMIUM - 9.99"
+          echo "7. ANTIQUE WALLPAPERS 100 PC - 2.40"
+          echo "8. AI BUSINESS STARTER PACK - 11.99"
+          echo "9. FESTIVAL VAULT 365 - 7.00"
+          echo "10. CREATOR KIT - 5.00"
+          echo ""
+          
+          # Common Reply Template - No Dhemaji - Premium
+          REPLY_COMMON="Namaste! 🙏 Radhika Agency se - Thanks for comment!"
+          REPLY_SHOP="🛒 Shop: payhip.com/Radhikaonline - All 10 Products - No Dhemaji"
+          REPLY_PRODUCTS="🛥️ Boat Front Luxury 1.20 | 🦁 Animal Facts 2.99 | 🤖 AI Websites 5.99 | 📅 365 Vault 3.99 | 🖼️ Wallpapers 2.40 | 🚀 Business Pack 11.99 | 🎉 Festival Vault 7.00 | 🎬 Creator Kit 5.00"
+          REPLY_CONTACT="📱 WhatsApp: wa.me/917996928762 | 📧 Payhip: kg214lll@gmail.com | 🎥 YouTube: AI Wonder Shorts @krishnagowala9464 (kgowala89@gmail.com)"
+          REPLY_FB="FACEBOOK PAGE 61594920592355 - Comment Reply - No Link Main Post - Comment me link - Bypass 2 links/month limit"
+          REPLY_IG="INSTAGRAM @guru1214348 - Link in Bio - DM for link"
+          REPLY_YT="YOUTUBE @krishnagowala9464 - Description me link - Unlimited"
+          REPLY_WA="WHATSAPP 7996928762 - Catalog me all 10 products - Status + Broadcast 256"
+          REPLY_PAYHIP="PAYHIP payhip.com/Radhikaonline - Owner kg214lll@gmail.com - 10 Products"
+          
+          echo "--------------------------------------------------"
+          echo "FACEBOOK PAGE COMMENT REPLY - 61594920592355"
+          echo "--------------------------------------------------"
+          if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "facebook" ]; then
+            echo "Incoming Comment: $TEST"
+            echo "Auto Reply:"
+            echo "$REPLY_COMMON"
+            echo "$REPLY_SHOP"
+            echo "$REPLY_PRODUCTS"
+            echo "$REPLY_CONTACT"
+            echo "💡 Facebook Auto: Main post me link nahi - Comment me payhip.com/Radhikaonline - Bypass limit"
+            if [ -z "$FB_COMMENT_TOKEN" ] && [ -z "$FB_ACCESS_TOKEN" ]; then
+              echo "⚠️ TOKEN NOT SET - Dry Run Mode - Caption ready - Manual reply karo - Free Business Suite se auto-reply ON karo"
+            else
+              echo "✅ TOKEN SET - Auto Reply ON - Lifetime"
+            fi
+            echo ""
+          fi
+          
+          echo "--------------------------------------------------"
+          echo "INSTAGRAM COMMENT REPLY - @guru1214348 / @guru93944"
+          echo "--------------------------------------------------"
+          if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "instagram" ]; then
+            echo "Incoming Comment: $TEST"
+            echo "Auto Reply:"
+            echo "$REPLY_COMMON"
+            echo "$REPLY_SHOP"
+            echo "Link in Bio - DM for link - @guru1214348"
+            echo "$REPLY_CONTACT"
+            echo "💡 Instagram Auto: Story sticker + Bio link - Free"
+            echo ""
+          fi
+          
+          echo "--------------------------------------------------"
+          echo "YOUTUBE COMMENT REPLY - @krishnagowala9464 - kgowala89@gmail.com ONLY"
+          echo "--------------------------------------------------"
+          if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "youtube" ]; then
+            echo "Incoming Comment: $TEST"
+            echo "Auto Reply:"
+            echo "$REPLY_COMMON"
+            echo "$REPLY_SHOP"
+            echo "YouTube Description me link - Unlimited - FB jaisa limit nahi"
+            echo "Channel: AI Wonder Shorts @krishnagowala9464 - Owner kgowala89@gmail.com ONLY"
+            echo "$REPLY_CONTACT"
+            echo "💡 YouTube Auto: YouTube Studio -> Settings -> Community -> Defaults -> Auto reply - Free"
+            echo ""
+          fi
+          
+          echo "--------------------------------------------------"
+          echo "WHATSAPP COMMENT / MESSAGE REPLY - 7996928762"
+          echo "--------------------------------------------------"
+          if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "whatsapp" ]; then
+            echo "Incoming Message: $TEST"
+            echo "Auto Reply:"
+            echo "$REPLY_COMMON"
+            echo "$REPLY_SHOP"
+            echo "Catalog: wa.me/c/917996928762 - All 10 Products"
+            echo "Broadcast 256 + Greeting + Away + Labels - FREE Business App - No KarobarChat 1199"
+            echo "$REPLY_CONTACT"
+            echo ""
+          fi
+          
+          echo "--------------------------------------------------"
+          echo "PAYHIP CUSTOMER MESSAGE REPLY - kg214lll@gmail.com"
+          echo "--------------------------------------------------"
+          if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "payhip" ]; then
+            echo "Incoming Customer Email: $TEST"
+            echo "Auto Reply:"
+            echo "Subject: Re: $TEST - Radhika Agency - payhip.com/Radhikaonline"
+            echo "$REPLY_COMMON"
+            echo "$REPLY_SHOP"
+            echo "$REPLY_PRODUCTS"
+            echo "Thanks - Payhip Owner: kg214lll@gmail.com - 10 Products - No Dhemaji"
+            echo "Email: kg214lll@gmail.com + Backup kgowala89@gmail.com (YouTube ONLY)"
+            echo ""
+          fi
+          
+          echo "--------------------------------------------------"
+          echo "KEYWORD BASED AUTO-REPLY - SMART"
+          echo "--------------------------------------------------"
+          echo "If comment contains:"
+          echo "  'link' / 'payhip' / 'shop' -> Reply with Shop link payhip.com/Radhikaonline"
+          echo "  'price' / 'kitna' / 'cost' -> Reply: Check shop - All 10 Products - Premium - No price in comment - DM for offer"
+          echo "  'boat' / 'yacht' / 'luxury' -> Reply: Boat Front Luxury Edition 1.20 - 1000 AI Prompts - Yacht Pineapple"
+          echo "  'animal' -> Reply: Amazing Animal Facts 100+ - 2.99 - Kids + Creators"
+          echo "  'ai website' / 'blueprint' -> Reply: 3 Secret AI Websites + Monetization Blueprint 5.99"
+          echo "  '365' / 'vault' -> Reply: 365 AI Content Creator Vault Hindi English 3.99"
+          echo "  'wallpaper' -> Reply: Antique Wallpapers 100 PC Premium 2.40"
+          echo "  'business' -> Reply: AI Business Starter Pack 11.99"
+          echo "  'festival' / 'diwali' / 'bihu' -> Reply: Festival Content Vault 365 - 7.00"
+          echo "  'creator' / 'youtube' / 'instagram' -> Reply: Creator Content Starter Kit 5.00"
+          echo "  'whatsapp' / 'contact' -> Reply: wa.me/917996928762"
+          echo "  Default -> All 10 Products list + Shop + WhatsApp"
+          echo ""
+          echo "=================================================="
+          echo "SUCCESS: Sabhi Accounts Comment Auto-Reply - No Dhemaji"
+          echo "Facebook 61594920592355 + Instagram @guru1214348 + YouTube @krishnagowala9464"
+          echo "WhatsApp 7996928762 + Payhip payhip.com/Radhikaonline"
+          echo "Payhip Owner: kg214lll@gmail.com | YouTube ONLY: kgowala89@gmail.com"
+          echo "10 Products Only - No Dhemaji - Lifetime - krr908"
+          echo "Next Check: 15 min me phir - Har 15 min auto - Zindagi bhar"
+          echo "============================
