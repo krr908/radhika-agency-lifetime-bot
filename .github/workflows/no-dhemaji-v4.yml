@@ -1,5 +1,4 @@
-
-name: Radhika Agency - SABHI ACCOUNTS - Lifetime OS V3 - krr908
+name: Radhika Agency - SABHI ACCOUNTS - No Dhemaji V4 - krr908
 
 on:
   schedule:
@@ -7,72 +6,68 @@ on:
     - cron: '30 9 * * *'
     - cron: '00 15 * * *'
   workflow_dispatch:
-    inputs:
-      platform:
-        description: 'Kis platform par post karna hai? (all/facebook/instagram/whatsapp/youtube/payhip)'
-        required: false
-        default: 'all'
-      product:
-        description: 'Kaunsa product? (auto/dhemaji/boat/space/animal/ai-websites/365-vault/wallpapers/business/festival/creator)'
-        required: false
-        default: 'auto'
 
 jobs:
-  radhika-all-accounts-lifetime:
+  radhika-lifetime-no-dhemaji:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Sabhi Accounts - Lifetime Bot - krr908
+      - name: Radhika Agency - All Accounts - No Dhemaji - 10 Products
         run: |
-          python3 << 'PY'
-          import os, datetime
-          day = int(datetime.datetime.now().strftime("%d"))
-          products = [
-            {"id":"dhemaji","name":"Dhemaji College Special - UPSC APSC SSC 2500+ Pages","caption":"Dhemaji College Special - UPSC APSC SSC 2500+ Pages Notes - Dhemaji Silapathar Jonai Lakhimpur","tags":"#DhemajiCollege #UPSC #APSC #SSC #RadhikaAgency"},
-            {"id":"boat","name":"1000 AI Viral Prompts - Boat Front Luxury Edition 1.20","caption":"Boat Front Luxury Edition 1.20 - 1000 AI Viral Prompts - Yacht Pineapple Mocktail","tags":"#BoatFront #Luxury #YachtLife #RadhikaAgency"},
-            {"id":"space","name":"Antariksh Space Edition","caption":"Antariksh Se Dhemaji Tak - Space Earth Photo AI se","tags":"#Antariksh #SpaceEdition #DhemajiToSpace"},
-            {"id":"animal","name":"Amazing Animal Facts - 100+ Facts - $2.99","caption":"Amazing Animal Facts - 100+ Incredible Animal Facts - Kids Students Creators","tags":"#AnimalFacts #ViralContent"},
-            {"id":"ai-websites","name":"3 Secret AI Websites + Monetization Blueprint - $5.99","caption":"3 Secret AI Websites + Monetization Blueprint - Hidden AI Tools + Earn Money","tags":"#AIWebsites #SecretAI #Monetization"},
-            {"id":"365-vault","name":"365 AI Content Creator Vault Hindi English - $3.99","caption":"365 AI Content Creator Vault Hindi + English - 365 Days Content","tags":"#365Vault #ContentCreator"},
-            {"id":"wallpapers","name":"Antique Wallpapers 100 PC Premium - $2.40","caption":"Antique Wallpapers 100 PC Premium Collection - Vintage Aesthetic","tags":"#Wallpapers #Antique"},
-            {"id":"business","name":"Ai Business Starter Pack - $11.99","caption":"Ai Business Starter Pack - Start AI Business Today","tags":"#AIBusiness #StarterPack"},
-            {"id":"festival","name":"Festival Content Vault 365 - $7.00","caption":"Festival Content Vault 365 - All Festivals Diwali Bihu Holi","tags":"#FestivalVault #Diwali #Bihu"},
-            {"id":"creator-kit","name":"Creator Content Starter Kit - $5.00","caption":"Creator Content Starter Kit - New Creators YouTube Instagram","tags":"#CreatorKit #YouTube"},
-          ]
-          selected = products[day % len(products)]
-          print("="*70)
-          print(f"RADHIKA AGENCY SABHI ACCOUNTS V3 - krr908 - {selected['name']}")
-          print("="*70)
-          print("")
-          print("FACEBOOK PAGE - 61594920592355 - No Link Main Post")
-          print(selected['caption'])
-          print(selected['tags'])
-          print("Comment 1: payhip.com/Radhikaonline - Full Shop")
-          print("Comment 2: wa.me/917996928762 - WhatsApp")
-          print("")
-          print("INSTAGRAM - @guru1214348 - Link in Bio")
-          print(selected['caption'])
-          print(selected['tags'])
-          print("")
-          print("WHATSAPP - 7996928762 - Status + Broadcast")
-          print(selected['caption'])
-          print("Catalog: payhip.com/Radhikaonline - All 11 Products")
-          print("")
-          print("YOUTUBE - @krishnagowala9464 - Description Me Link")
-          print(f"Title: {selected['name']} | Radhika Agency | Dhemaji")
-          print(selected['caption'])
-          print("")
-          print("EMAIL - kg214lll@gmail.com")
-          print(f"Subject: {selected['name']} - Radhika Agency")
-          print("")
-          print("PAYHIP SHOP: payhip.com/Radhikaonline - All Products")
-          print("FREE AUTOMATION: No KarobarChat - Pure GitHub + Business App")
-          print("Lifetime: Zindagi Bhar Chalega - krr908")
-          PY
-      - name: Summary
-        run: echo "Sabhi accounts ke captions
+          echo "=================================================="
+          echo "RADHIKA AGENCY - SABHI ACCOUNTS - No Dhemaji V4"
+          echo "PAYHIP OWNER: kg214lll@gmail.com - 10 Products"
+          echo "YOUTUBE ONLY: kgowala89@gmail.com - AI Wonder Shorts"
+          echo "Shop: payhip.com/Radhikaonline - No Dhemaji"
+          echo "=================================================="
+          DAY=$(date +%d)
+          MOD=$((DAY % 10))
+          if [ $MOD -eq 0 ]; then
+            echo "POST 1/10: BOAT FRONT LUXURY EDITION 1.20"
+            echo "1000 AI Viral Prompts - Yacht Pineapple Mocktail"
+            echo "Boat Front Luxury - AI se banaya"
+          elif [ $MOD -eq 1 ]; then
+            echo "POST 2/10: ANTARIKSH SPACE EDITION"
+            echo "Antariksh Se - Space Earth Photo AI se"
+          elif [ $MOD -eq 2 ]; then
+            echo "POST 3/10: AMAZING ANIMAL FACTS - 100+ FACTS - 2.99"
+            echo "100+ Incredible Animal Facts - Kids Creators"
+          elif [ $MOD -eq 3 ]; then
+            echo "POST 4/10: 3 SECRET AI WEBSITES + BLUEPRINT - 5.99"
+            echo "3 Secret AI Websites + Monetization Blueprint"
+          elif [ $MOD -eq 4 ]; then
+            echo "POST 5/10: 365 AI CONTENT CREATOR VAULT - 3.99"
+            echo "365 Days Content - Hindi + English"
+          elif [ $MOD -eq 5 ]; then
+            echo "POST 6/10: DIGITAL PRODUCT PREMIUM - 9.99"
+            echo "Digital Product Premium Collection"
+          elif [ $MOD -eq 6 ]; then
+            echo "POST 7/10: ANTIQUE WALLPAPERS 100 PC - 2.40"
+            echo "Antique Wallpapers 100 PC Premium Collection"
+          elif [ $MOD -eq 7 ]; then
+            echo "POST 8/10: AI BUSINESS STARTER PACK - 11.99"
+            echo "Ai Business Starter Pack - Start AI Business"
+          elif [ $MOD -eq 8 ]; then
+            echo "POST 9/10: FESTIVAL CONTENT VAULT 365 - 7.00"
+            echo "Festival Content Vault 365 - Diwali Bihu Holi"
+          else
+            echo "POST 10/10: CREATOR CONTENT STARTER KIT - 5.00"
+            echo "Creator Content Starter Kit - New Creators"
+          fi
+          echo ""
+          echo "FACEBOOK PAGE 61594920592355 - No Link Main Post"
+          echo "Caption: Boat/Animal/AI Products - Premium - No Price"
+          echo "Comment 1: payhip.com/Radhikaonline - Full Shop - kg214lll"
+          echo "Comment 2: wa.me/917996928762 - WhatsApp"
+          echo "INSTAGRAM @guru1214348 - Link in Bio - payhip.com/Radhikaonline"
+          echo "WHATSAPP 7996928762 - Status + Broadcast + Catalog - All 10 Products"
+          echo "YOUTUBE @krishnagowala9464 - kgowala89@gmail.com ONLY"
+          echo "Title: AI Products | Radhika Agency | payhip.com/Radhikaonline"
+          echo "Description: Shop Link payhip.com/Radhikaonline - Unlimited Links"
+          echo "EMAIL: kg214lll@gmail.com Payhip + kgowala89@gmail.com YouTube ONLY"
+          echo "FREE: No KarobarChat - GitHub + Business App - Lifetime Free"
+          echo "=================================================="
+          echo "SUCCESS: Sabhi Accounts - No Dhemaji - 10 Products - Lifetime OK!"
+          echo "krr908 - Zindagi Bhar Chalega - Next: 9 AM, 3 PM, 8:30 PM IST"
+          echo "================================================
