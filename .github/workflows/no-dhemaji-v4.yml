@@ -1,0 +1,78 @@
+
+name: Radhika Agency - SABHI ACCOUNTS - Lifetime OS V3 - krr908
+
+on:
+  schedule:
+    - cron: '30 3 * * *'
+    - cron: '30 9 * * *'
+    - cron: '00 15 * * *'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Kis platform par post karna hai? (all/facebook/instagram/whatsapp/youtube/payhip)'
+        required: false
+        default: 'all'
+      product:
+        description: 'Kaunsa product? (auto/dhemaji/boat/space/animal/ai-websites/365-vault/wallpapers/business/festival/creator)'
+        required: false
+        default: 'auto'
+
+jobs:
+  radhika-all-accounts-lifetime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Sabhi Accounts - Lifetime Bot - krr908
+        run: |
+          python3 << 'PY'
+          import os, datetime
+          day = int(datetime.datetime.now().strftime("%d"))
+          products = [
+            {"id":"dhemaji","name":"Dhemaji College Special - UPSC APSC SSC 2500+ Pages","caption":"Dhemaji College Special - UPSC APSC SSC 2500+ Pages Notes - Dhemaji Silapathar Jonai Lakhimpur","tags":"#DhemajiCollege #UPSC #APSC #SSC #RadhikaAgency"},
+            {"id":"boat","name":"1000 AI Viral Prompts - Boat Front Luxury Edition 1.20","caption":"Boat Front Luxury Edition 1.20 - 1000 AI Viral Prompts - Yacht Pineapple Mocktail","tags":"#BoatFront #Luxury #YachtLife #RadhikaAgency"},
+            {"id":"space","name":"Antariksh Space Edition","caption":"Antariksh Se Dhemaji Tak - Space Earth Photo AI se","tags":"#Antariksh #SpaceEdition #DhemajiToSpace"},
+            {"id":"animal","name":"Amazing Animal Facts - 100+ Facts - $2.99","caption":"Amazing Animal Facts - 100+ Incredible Animal Facts - Kids Students Creators","tags":"#AnimalFacts #ViralContent"},
+            {"id":"ai-websites","name":"3 Secret AI Websites + Monetization Blueprint - $5.99","caption":"3 Secret AI Websites + Monetization Blueprint - Hidden AI Tools + Earn Money","tags":"#AIWebsites #SecretAI #Monetization"},
+            {"id":"365-vault","name":"365 AI Content Creator Vault Hindi English - $3.99","caption":"365 AI Content Creator Vault Hindi + English - 365 Days Content","tags":"#365Vault #ContentCreator"},
+            {"id":"wallpapers","name":"Antique Wallpapers 100 PC Premium - $2.40","caption":"Antique Wallpapers 100 PC Premium Collection - Vintage Aesthetic","tags":"#Wallpapers #Antique"},
+            {"id":"business","name":"Ai Business Starter Pack - $11.99","caption":"Ai Business Starter Pack - Start AI Business Today","tags":"#AIBusiness #StarterPack"},
+            {"id":"festival","name":"Festival Content Vault 365 - $7.00","caption":"Festival Content Vault 365 - All Festivals Diwali Bihu Holi","tags":"#FestivalVault #Diwali #Bihu"},
+            {"id":"creator-kit","name":"Creator Content Starter Kit - $5.00","caption":"Creator Content Starter Kit - New Creators YouTube Instagram","tags":"#CreatorKit #YouTube"},
+          ]
+          selected = products[day % len(products)]
+          print("="*70)
+          print(f"RADHIKA AGENCY SABHI ACCOUNTS V3 - krr908 - {selected['name']}")
+          print("="*70)
+          print("")
+          print("FACEBOOK PAGE - 61594920592355 - No Link Main Post")
+          print(selected['caption'])
+          print(selected['tags'])
+          print("Comment 1: payhip.com/Radhikaonline - Full Shop")
+          print("Comment 2: wa.me/917996928762 - WhatsApp")
+          print("")
+          print("INSTAGRAM - @guru1214348 - Link in Bio")
+          print(selected['caption'])
+          print(selected['tags'])
+          print("")
+          print("WHATSAPP - 7996928762 - Status + Broadcast")
+          print(selected['caption'])
+          print("Catalog: payhip.com/Radhikaonline - All 11 Products")
+          print("")
+          print("YOUTUBE - @krishnagowala9464 - Description Me Link")
+          print(f"Title: {selected['name']} | Radhika Agency | Dhemaji")
+          print(selected['caption'])
+          print("")
+          print("EMAIL - kg214lll@gmail.com")
+          print(f"Subject: {selected['name']} - Radhika Agency")
+          print("")
+          print("PAYHIP SHOP: payhip.com/Radhikaonline - All Products")
+          print("FREE AUTOMATION: No KarobarChat - Pure GitHub + Business App")
+          print("Lifetime: Zindagi Bhar Chalega - krr908")
+          PY
+      - name: Summary
+        run: echo "Sabhi accounts ke captions
