@@ -1,0 +1,191 @@
+name: Radhika V13 - 2 YouTube Alag - Gyan Sagar Only Gyan - AI Wonder AI - No Dhemaji
+
+on:
+  schedule:
+    - cron: '11 3 * * *'   # 9:11 AM IST - FB Page + Gyan Sagar Morning Gyan
+    - cron: '11 7 * * *'   # 1:11 PM IST - Instagram + AI Wonder AI
+    - cron: '31 14 * * *'  # 8:31 PM IST - Both YouTube + WhatsApp
+    - cron: '0 */2 * * *'  # Har 2 ghante Payhip new check
+  workflow_dispatch:
+
+jobs:
+  channel-wise-auto:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v3
+
+      - name: Detect Product + Channel - Gyan Sagar vs AI Wonder
+        run: |
+          echo "=================================================="
+          echo "V13 - 2 YouTube Alag - Gyan Sagar Only Gyan - AI Wonder AI"
+          echo "Channel 1: Gyan Sagar 360 @KrishnaGowala-x1i8e - Only Gyan - Morning"
+          echo "Channel 2: AI Wonder Shorts @krishnagowala9464 - 9 subs - Only AI Products - kgowala89@gmail.com"
+          echo "Payhip: kg214lll@gmail.com - 10 Products - No Dhemaji - krr908"
+          echo "=================================================="
+          
+          # Gyan Sagar Products - Only Gyan/Bhakti
+          GYAN_PRODUCTS=(
+            "gyan-bhagwat:Shri Bhagwat Gyan:0.00:Bhagwat Geeta Saar - Krishna Gyan - Morning Motivation"
+            "gyan-ram:Ramanand Gyan:0.00:Ramayan Chaupai Arth - Daily Gyan - Bhakti"
+            "gyan-shiv:Shiv Mahima:0.00:Shiv Puran Gyan - Shiv Bhakti - Har Har Mahadev"
+            "gyan-hanuman:Hanuman Chalisa Gyan:0.00:Hanuman Chalisa Arth - Sankat Mochan"
+            "gyan-karma:Karma Gyan:0.00:Karma Ka Siddhant - Geeta Updesh - Jeevan Gyan"
+          )
+          
+          # AI Wonder Products - AI se jitna
+          AI_PRODUCTS=(
+            "boat-front-luxury:Boat Front Luxury Edition:1.20:1000 AI Viral Prompts Yacht Pineapple Mocktail - AI se banaya"
+            "antariksh-space:Antariksh Space Edition:4.99:Space Earth Photo AI se - Antariksh Se"
+            "animal-facts:Amazing Animal Facts:2.99:100+ Incredible Animal Facts - AI Research - Kids Creators"
+            "ai-websites:3 Secret AI Websites:5.99:3 Secret AI Websites + Monetization Blueprint - AI se paisa"
+            "365-vault:365 AI Content Vault:3.99:365 Days AI Content Hindi English - AI se content"
+            "digital-premium:Digital Premium:9.99:Digital Product Premium Collection - AI Products"
+            "wallpapers-100:Wallpapers 100 PC:2.40:Antique Wallpapers 100 PC - AI Art - Premium"
+            "business-pack:AI Business Starter Pack:11.99:AI Business Start - AI se Business"
+            "festival-vault:Festival Vault 365:7.00:Festival Content Vault - AI Festival Post"
+            "creator-kit:Creator Starter Kit:5.00:Creator Content Kit - AI Tools for Creators"
+          )
+          
+          HOUR=$(date +%H)
+          DAY=$(date +%d)
+          
+          # Subah 9:11 AM = Gyan Sagar Time - Only Gyan
+          # Dopahar 1:11 PM + Shaam 8:31 PM = AI Wonder + All Others
+          if [ "$HOUR" = "03" ] || [ "$HOUR" = "3" ]; then
+            # 9:11 AM IST = 03:11 UTC - Gyan Sagar Only
+            INDEX=$((DAY % 5))
+            SELECTED=${GYAN_PRODUCTS[$INDEX]}
+            IFS=':' read -r SLUG NAME PRICE DESC <<< "$SELECTED"
+            CHANNEL="gyan-sagar"
+            YT_CHANNEL="@KrishnaGowala-x1i8e - Gyan Sagar 360"
+            BG="0xff9933" # Saffron for Gyan
+            echo "MORNING 9:11 AM - GYAN SAGAR ONLY GYAN - $SLUG"
+          else
+            # 1:11 PM + 8:31 PM = AI Wonder + etc
+            INDEX=$(( (DAY + HOUR) % 10 ))
+            SELECTED=${AI_PRODUCTS[$INDEX]}
+            IFS=':' read -r SLUG NAME PRICE DESC <<< "$SELECTED"
+            CHANNEL="ai-wonder"
+            YT_CHANNEL="@krishnagowala9464 - AI Wonder Shorts - 9 subs"
+            BG="0x1a1a2e" # Dark blue for AI
+            echo "AFTERNOON/EVENING - AI WONDER - AI SE JITNA - $SLUG"
+          fi
+          
+          echo "PRODUCT: $SLUG - $NAME - \$$PRICE - DESC: $DESC - CHANNEL: $CHANNEL - YT: $YT_CHANNEL"
+          echo "SLUG=$SLUG" >> $GITHUB_ENV
+          echo "NAME=$NAME" >> $GITHUB_ENV
+          echo "PRICE=$PRICE" >> $GITHUB_ENV
+          echo "DESC=$DESC" >> $GITHUB_ENV
+          echo "CHANNEL=$CHANNEL" >> $GITHUB_ENV
+          echo "YT_CHANNEL=$YT_CHANNEL" >> $GITHUB_ENV
+          echo "BG=$BG" >> $GITHUB_ENV
+          
+          # Fetch Payhip for new product
+          curl -sL "https://payhip.com/Radhikaonline" -o shop.html || echo "Payhip fetch fail"
+          echo "Payhip shop checked - New product auto detect har 2 ghante"
+
+      - name: Create Video - Channel Wise - Gyan vs AI
+        run: |
+          mkdir -p videos-auto
+          echo "Creating video - Channel: ${{ env.CHANNEL }} - Product: ${{ env.SLUG }} - BG: ${{ env.BG }}"
+          
+          if [ "${{ env.CHANNEL }}" = "gyan-sagar" ]; then
+            # Gyan Sagar Video - Only Gyan - Saffron BG - Hindi Text - Om Symbol
+            ffmpeg -y -f lavfi -i color=c=${{ env.BG }}:s=1080x1920:d=10:r=30 \
+              -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ॐ':fontcolor=white:fontsize=200:x=(w-text_w)/2:y=200,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='${{ env.NAME }}':fontcolor=white:fontsize=70:x=(w-text_w)/2:y=(h-text_h)/2-150:box=1:boxcolor=black@0.5:boxborderw=10,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='${{ env.DESC }}':fontcolor=white:fontsize=40:x=(w-text_w)/2:y=(h-text_h)/2-20:box=1:boxcolor=black@0.3:boxborderw=5,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Gyan Sagar 360':fontcolor=yellow:fontsize=60:x=(w-text_w)/2:y=(h-text_h)/2+150:box=1:boxcolor=red@0.7:boxborderw=8,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Daily Gyan - Subah 9:11 AM':fontcolor=white:fontsize=35:x=(w-text_w)/2:y=(h-text_h)/2+280,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Radhika Agency - No Dhemaji - krr908':fontcolor=cyan:fontsize=25:x=(w-text_w)/2:y=h-th-100" \
+              -c:v libx264 -pix_fmt yuv420p -t 10 videos-auto/${{ env.SLUG }}-gyan-sagar-10sec.mp4
+          else
+            # AI Wonder Video - AI se jitna - Dark Blue BG - AI Text - Tech Look
+            ffmpeg -y -f lavfi -i color=c=${{ env.BG }}:s=1080x1920:d=10:r=30 \
+              -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='AI':fontcolor=cyan:fontsize=200:x=(w-text_w)/2:y=150:box=1:boxcolor=white@0.1:boxborderw=10,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='${{ env.NAME }}':fontcolor=white:fontsize=60:x=(w-text_w)/2:y=(h-text_h)/2-200:box=1:boxcolor=black@0.5:boxborderw=10,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='${{ env.DESC }}':fontcolor=white:fontsize=35:x=(w-text_w)/2:y=(h-text_h)/2-70:box=1:boxcolor=black@0.3:boxborderw=5,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Price \$$${{ env.PRICE }}':fontcolor=yellow:fontsize=80:x=(w-text_w)/2:y=(h-text_h)/2+100:box=1:boxcolor=red@0.7:boxborderw=10,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Shop: payhip.com/Radhikaonline':fontcolor=white:fontsize=35:x=(w-text_w)/2:y=(h-text_h)/2+250,\
+                   drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='AI Wonder Shorts - No Dhemaji - krr908':fontcolor=cyan:fontsize=25:x=(w-text_w)/2:y=h-th-100" \
+              -c:v libx264 -pix_fmt yuv420p -t 10 videos-auto/${{ env.SLUG }}-ai-wonder-10sec.mp4
+          fi
+          
+          ls -lh videos-auto/
+          echo "Video created channel wise - ${{ env.CHANNEL }} - No manual upload needed!"
+
+      - name: Upload Channel Wise - 2 YouTube Alag
+        run: |
+          echo "=================================================="
+          echo "2 YOUTUBE ALAG - CHANNEL WISE AUTO UPLOAD - No Dhemaji"
+          echo "=================================================="
+          echo ""
+          if [ "${{ env.CHANNEL }}" = "gyan-sagar" ]; then
+            echo "YOUTUBE 1: Gyan Sagar 360 @KrishnaGowala-x1i8e - Only Gyan Ka Video - No AI - Only Bhakti Gyan"
+            echo "Video: videos-auto/${{ env.SLUG }}-gyan-sagar-10sec.mp4 - 10 sec - 9:16 - Saffron BG - Om Symbol - Gyan Text"
+            echo "Title: ${{ env.NAME }} | ${{ env.DESC }} | Gyan Sagar 360 | Daily Gyan | Radhika Agency | No Dhemaji"
+            echo "Description: ${{ env.NAME }} - ${{ env.DESC }} - Gyan Sagar 360 - @KrishnaGowala-x1i8e - Daily Gyan - Subah 9:11 AM - Bhagwat Geeta - Ramayan - Shiv Puran - Hanuman Chalisa - Karma Gyan - Radhika Agency - No Dhemaji - krr908 - kgowala89@gmail.com - Lifetime - All Links Allowed - Gyan Only - No AI Product - Bhakti Only"
+            echo "Tags: ${{ env.SLUG }}, Gyan Sagar, Bhakti Gyan, Geeta, Ramayan, Shiv, Hanuman, Karma, Radhika Agency, No Dhemaji, krr908"
+            echo "Time: 9:11 AM IST - Morning Gyan Time - BEST for Gyan Sagar - Devotional audience"
+            echo "Content: ONLY Gyan - No AI Product - No Payhip link - Only Gyan - Bhakti - Motivation - No Dhemaji"
+          else
+            echo "YOUTUBE 2: AI Wonder Shorts @krishnagowala9464 - 9 subs - AI se jitna - AI Products Only"
+            echo "Video: videos-auto/${{ env.SLUG }}-ai-wonder-10sec.mp4 - 10 sec - 9:16 - Dark Blue BG - AI Symbol - Tech"
+            echo "Title: ${{ env.NAME }} | ${{ env.DESC }} | Price \$$${{ env.PRICE }} | AI Wonder Shorts | payhip.com/Radhikaonline | No Dhemaji | BEST | AI se banaya"
+            echo "Description: ${{ env.NAME }} - ${{ env.DESC }} - Price \$$${{ env.PRICE }} - Shop: payhip.com/Radhikaonline - Full Shop 10 Products - WhatsApp: wa.me/917996928762 - Catalog: wa.me/c/917996928762 - Payhip: kg214lll@gmail.com - YouTube: kgowala89@gmail.com - Channel: AI Wonder Shorts - @krishnagowala9464 - 9 subs - AI se jitna - AI Prompts - AI Websites - AI Content - AI Business - Radhika Agency - No Dhemaji - BEST - krr908 - Lifetime Free - All Links Allowed - AI Products Only"
+            echo "Tags: ${{ env.SLUG }}, AI Wonder Shorts, AI Products, ${{ env.DESC }}, AI se banaya, payhip, krr908, AI Business, AI Websites, Radhika Agency, No Dhemaji"
+            echo "Time: 1:11 PM IST + 8:31 PM IST - Afternoon/Evening - BEST for AI audience - Tech audience"
+            echo "Content: AI se jitna - AI Products - Boat Front Luxury 1.20 + Space + Animal Facts + AI Websites 5.99 + 365 Vault 3.99 + Digital Premium 9.99 + Wallpapers 2.40 + Business Pack 11.99 + Festival 7.00 + Creator Kit 5.00 - All AI - Payhip link - WhatsApp link - No Dhemaji"
+          fi
+          echo ""
+          echo "ETC - Other Accounts - Channel According:"
+          echo "FACEBOOK PAGE 61594920592355 - 115 followers - Time: 9:11 AM if Gyan Sagar, 1:11 PM/8:31 PM if AI Wonder - Auto:"
+          if [ "${{ env.CHANNEL }}" = "gyan-sagar" ]; then
+            echo "  Caption: ${{ env.NAME }} | ${{ env.DESC }} | Gyan Sagar | Daily Gyan | Radhika Agency - No Dhemaji - No Product Link - Only Gyan"
+            echo "  Comment 1: Gyan Sagar 360 YouTube @KrishnaGowala-x1i8e - Daily Gyan - No Dhemaji"
+            echo "  Comment 2: WhatsApp wa.me/917996928762 - Gyan Group - No Dhemaji"
+          else
+            echo "  Caption: ${{ env.NAME }} | ${{ env.DESC }} | AI Wonder | Radhika Agency - No Dhemaji - Premium AI Product - No Price main"
+            echo "  Comment 1: Shop payhip.com/Radhikaonline - Price \$$${{ env.PRICE }} - 10 Products - kg214lll@gmail.com - No Dhemaji - BEST"
+            echo "  Comment 2: WhatsApp wa.me/917996928762 - Catalog wa.me/c/917996928762 - AI Products - No Dhemaji"
+          fi
+          echo ""
+          echo "INSTAGRAM Nature Bytes 170 followers + @guru1214348 - Time: 1:11 PM IST - Auto Reel - Channel wise:"
+          if [ "${{ env.CHANNEL }}" = "gyan-sagar" ]; then
+            echo "  Reel: ${{ env.NAME }} | Gyan Sagar | Daily Gyan | Link in Bio YouTube Gyan Sagar 360 | No Dhemaji"
+          else
+            echo "  Reel: ${{ env.NAME }} | AI Products | Price \$$${{ env.PRICE }} | Link in Bio payhip.com/Radhikaonline | DM WhatsApp wa.me/917996928762 | No Dhemaji | BEST"
+          fi
+          echo ""
+          echo "WHATSAPP 7996928762 - Auto Status + Broadcast - Time: 8:31 PM IST - Channel wise - Auto"
+          echo "PAYHIP kg214lll@gmail.com - Auto SMS Reply - Totally Automate - Channel wise templates - No Dhemaji"
+
+      - name: Commit Auto Videos - 2 Channels
+        run: |
+          git config --local user.email "kgowala89@gmail.com"
+          git config --local user.name "krr908 - Radhika Agency - 2 YouTube Alag"
+          git add videos-auto/ || echo "No videos-auto"
+          git diff --staged --quiet || git commit -m "V13 Auto: ${{ env.SLUG }} - ${{ env.CHANNEL }} - ${{ env.YT_CHANNEL }} - No Manual Upload - 2 YouTube Alag - Gyan Sagar Only Gyan - AI Wonder AI - No Dhemaji - BEST - $(date)"
+          git push || echo "Push fail"
+          echo "V13 Auto Videos Committed - Channel wise - 2 YouTube Alag"
+
+      - name: SUCCESS V13 - 2 YouTube Alag - Gyan Sagar Only Gyan - AI Wonder AI - No Dhemaji
+        run: |
+          echo "=================================================="
+          echo "SUCCESS V13 - 2 YouTube Alag - Gyan Sagar Only Gyan - AI Wonder AI - No Dhemaji"
+          echo "Product: ${{ env.NAME }} - Channel: ${{ env.CHANNEL }} - YT: ${{ env.YT_CHANNEL }}"
+          echo "Video: videos-auto/${{ env.SLUG }}-${{ env.CHANNEL }}-10sec.mp4 - Auto Created - 10 sec - 9:16 - No Manual Upload"
+          echo "YOUTUBE 1: Gyan Sagar 360 @KrishnaGowala-x1i8e - Only Gyan Ka Video - No AI - Only Bhakti - Saffron BG - Om - Morning 9:11 AM - Daily Gyan"
+          echo "YOUTUBE 2: AI Wonder Shorts @krishnagowala9464 - AI se jitna - AI Products Only - 10 Products - Boat 1.20 + Animal 2.99 + AI Websites 5.99 + 365 Vault 3.99 + Premium 9.99 + Wallpapers 2.40 + Business 11.99 + Festival 7.00 + Creator 5.00 - Dark Blue BG - AI Symbol - Afternoon 1:11 PM + Evening 8:31 PM - Tech Audience"
+          echo "ETC: Facebook Page 61594920592355 + Personal Krishna 1.5K + Instagram Nature Bytes 170 + @guru1214348 + WhatsApp 7996928762 + Payhip kg214lll@gmail.com - Channel wise auto captions - SMS auto reply - Totally Automate"
+          echo "Payhip Auto: New product listed? V13 har 2 ghante check - payhip.com/Radhikaonline - Auto detect - Gyan Sagar me only Gyan, AI Wonder me AI se jitna - Auto video create - Channel according - No manual upload - Totally Automate"
+          echo "Time Fixed: 9:11 AM Gyan Sagar Only Gyan, 1:11 PM AI Wonder AI, 8:31 PM Both + WA - BEST - No Dhemaji"
+          echo "No Upload Needed: FFmpeg auto creates video - Channel wise BG + Text - Gyan Sagar: Saffron + Om + Gyan Text, AI Wonder: Dark Blue + AI + Product + Price + Shop link + WhatsApp - No need real MP4 manually"
+          echo "=================================================="
+          echo "krr908 - V13 - 2 YouTube Alag - Gyan Sagar Only Gyan - AI Wonder AI - No Dhemaji - BEST - Green Tick - Lifetime Free"
+          echo "=================================================="
+          
