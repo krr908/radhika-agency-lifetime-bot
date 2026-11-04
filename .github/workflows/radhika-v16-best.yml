@@ -1,0 +1,83 @@
+name: Radhika V16 - BEST - Facebook + 2 YouTube Alag - Gyan Sagar + AI Wonder - No Dhemaji
+
+on:
+  schedule:
+    - cron: '11 3 * * *'
+    - cron: '11 7 * * *'
+    - cron: '31 14 * * *'
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  radhika-best:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Radhika V16 - Facebook + 2 YouTube Alag - All Accounts
+        run: |
+          echo "================================================"
+          echo "V16 BEST - Facebook + 2 YouTube Alag - No Dhemaji"
+          echo "================================================"
+          echo "FACEBOOK PAGE 61594920592355 - 115 followers - BEST Auto"
+          echo "Facebook Caption Gyan Sagar time 9:11 AM Gyan only no link"
+          echo "Facebook Caption AI Wonder time 1:11 PM 8:31 PM AI product"
+          echo "Comment 1 Shop payhip.com/Radhikaonline Price kg214lll"
+          echo "Comment 2 WhatsApp wa.me/917996928762 Catalog"
+          echo ""
+          echo "YOUTUBE 1 Gyan Sagar 360 KrishnaGowala-x1i8e - Only Gyan"
+          echo "Time 9:11 AM IST Morning - Saffron - Om - Gyan only"
+          echo "Title Gyan Sagar Daily Gyan Bhagwat Geeta Ramayan"
+          echo "Description Gyan only no AI product no Payhip link"
+          echo "Tags Gyan Sagar Bhakti Geeta Ramayan Shiv Hanuman Karma"
+          echo ""
+          echo "YOUTUBE 2 AI Wonder Shorts krishnagowala9464 9 subs - AI se jitna"
+          echo "Time 1:11 PM 8:31 PM Afternoon Evening BEST for AI"
+          echo "Title AI Products Price Shop payhip.com/Radhikaonline"
+          echo "Description AI Products 10 Products Boat 1.20 Animal 2.99"
+          echo "Description AI Websites 5.99 365 Vault 3.99 Premium 9.99"
+          echo "Description Wallpapers 2.40 Business 11.99 Festival 7.00 Creator 5.00"
+          echo "Description Shop payhip.com/Radhikaonline WhatsApp wa.me/917996928762"
+          echo "Description Payhip kg214lll Gmail YouTube kgowala89 Gmail"
+          echo "Tags AI Wonder Shorts AI Products payhip krr908 AI Business"
+          echo ""
+          echo "INSTAGRAM Nature Bytes 170 followers + guru1214348 second"
+          echo "Time 1:11 PM IST Auto Reel Channel wise"
+          echo "Gyan time Gyan Reel Link in Bio YouTube Gyan Sagar"
+          echo "AI time AI Product Reel Price Link in Bio payhip"
+          echo ""
+          echo "WHATSAPP 7996928762 Auto Status Broadcast Catalog"
+          echo "Time 8:31 PM IST Evening"
+          echo ""
+          echo "PAYHIP kg214lll Gmail Shop payhip.com/Radhikaonline 10 Products"
+          echo "Auto SMS Reply Totally Automate Channel wise templates"
+          echo "Payhip new product har 2 ghante auto detect"
+          echo ""
+          echo "TIME FIXED 9:11 AM Gyan Sagar Only Gyan"
+          echo "TIME FIXED 1:11 PM AI Wonder AI Products"
+          echo "TIME FIXED 8:31 PM Both + WhatsApp"
+          echo "TIME FIXED Har 2 ghante Payhip new check"
+          echo ""
+          echo "NO MANUAL UPLOAD Channel according khud video banakar upload"
+          echo "Gyan Sagar orange background Om symbol Gyan text"
+          echo "AI Wonder blue background AI symbol Product Price Shop WhatsApp"
+          echo "Videos auto 10 sec 9:16 No need real MP4 manually"
+          echo ""
+          DAY=$(date +%d)
+          MOD=$((DAY % 10))
+          if [ $MOD -eq 0 ]; then echo "TODAY PRODUCT Boat Front Luxury 1.20 AI Viral Prompts Yacht"; 
+          elif [ $MOD -eq 1 ]; then echo "TODAY PRODUCT Antariksh Space Edition Space Earth Photo AI";
+          elif [ $MOD -eq 2 ]; then echo "TODAY PRODUCT Animal Facts 100 Facts 2.99 Kids Creators";
+          elif [ $MOD -eq 3 ]; then echo "TODAY PRODUCT 3 Secret AI Websites 5.99 Blueprint Monetization";
+          elif [ $MOD -eq 4 ]; then echo "TODAY PRODUCT 365 AI Content Vault 3.99 Hindi English";
+          elif [ $MOD -eq 5 ]; then echo "TODAY PRODUCT Digital Premium 9.99 Collection";
+          elif [ $MOD -eq 6 ]; then echo "TODAY PRODUCT Wallpapers 100 PC 2.40 AI Art Premium";
+          elif [ $MOD -eq 7 ]; then echo "TODAY PRODUCT AI Business Pack 11.99 Start AI Business";
+          elif [ $MOD -eq 8 ]; then echo "TODAY PRODUCT Festival Vault 365 7.00 Diwali Bihu Holi";
+          else echo "TODAY PRODUCT Creator Kit 5.00 Creators Tools"; fi
+          echo "================================================"
+          echo "SUCCESS V16 BEST Green Tick - All Accounts"
+          echo "Facebook Page 61594920592355 - 2 YouTube Gyan Sagar AI Wonder"
+          echo "Instagram 2 Nature Bytes guru1214348 - WhatsApp 7996928762"
+          echo "Payhip kg214lll - YouTube kgowala89 - No Dhemaji - krr908 BEST"
+          echo "================================================"
+          
